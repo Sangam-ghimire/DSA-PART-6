@@ -1,5 +1,6 @@
 #include "Graph.h"
 #include <cstdlib>
+#include <iostream>
 
 bool Graph::isEmpty()
 {
@@ -73,9 +74,31 @@ int Graph::indegree(vertex *v)
 {
     if (directed == true)
     {
+        // we have to check whose neighbour does the given vertices is
+        vertex *temp = head;
+        int num = 0;
+        // checking all the edges
+        while (temp->next != NULL)
+        {
+            // checking all the neighbours of a particular edge
+            while (temp->neighbour != NULL)
+            {
+                if (temp = v)
+                {
+                    num++;
+                }
+            }
 
-        
+            temp = temp->next;
+        }
+        return num;
+    }
+    else
+    {
 
+        std::cout << "It is not a directed graph.So, there exists only degree" << std::endl;
+
+        return degree(v);
     }
 }
 
@@ -91,7 +114,13 @@ int Graph::outdegree(vertex *v)
             num++;
             temp = temp->neighbour;
         }
-        return true;
+        return num;
+    }
+    else
+    {
+        std::cout << "It is not a directed graph.So, there exists only degree" << std::endl;
+
+        return degree(v);
     }
 }
 
