@@ -22,13 +22,15 @@ private:
 
 public:
 
+    vertex *head;
+
     Graph(){
 
         head = NULL;
 
     }
 
-    Graph(bool dir) { 
+    Graph(int dir) { 
 
         head = NULL;
         directed = dir;
@@ -36,7 +38,6 @@ public:
 
     ~Graph() {}
 
-    vertex *head;
 
     bool isEmpty();
     bool isDirected();
