@@ -9,7 +9,6 @@ bool Graph::isEmpty()
         return true;
     }
     return false;
-
 }
 bool Graph::isDirected()
 {
@@ -18,7 +17,6 @@ bool Graph::isDirected()
         return true;
     }
     return false;
-
 }
 // add vertex
 // add edge
@@ -27,7 +25,8 @@ bool Graph::isDirected()
 // neighbour
 // neighbour
 
-void Graph :: addVertex(vertex *&newVertex){
+void Graph ::addVertex(vertex *&newVertex)
+{
 
     vertex *temp;
 
@@ -35,23 +34,19 @@ void Graph :: addVertex(vertex *&newVertex){
 
     head->next = newVertex;
     newVertex->next = temp->next;
-
 }
 
-void Graph :: addEdge(vertex *&vertex1 , vertex *&vertex2){
+void Graph ::addEdge(vertex *&vertex1, vertex *&vertex2)
+{
 
     vertex *temp;
 
     temp = head;
 
-    vertex1 -> next = vertex2;
-    head -> next = vertex1;
-    temp -> next -> next;
-
-
-
+    vertex1->next = vertex2;
+    head->next = vertex1;
+    temp->next->next;
 }
-
 
 int Graph::numVertices()
 {
@@ -66,7 +61,6 @@ int Graph::numVertices()
         }
     }
     return 0;
-
 }
 int Graph::numEdge()
 {
@@ -98,7 +92,6 @@ int Graph::numEdge()
         }
     }
     return 0;
-
 }
 
 int Graph::indegree(vertex *v)
@@ -153,7 +146,6 @@ int Graph::outdegree(vertex *v)
 
         return degree(v);
     }
-
 }
 
 int Graph::degree(vertex *v)
@@ -166,5 +158,4 @@ int Graph::degree(vertex *v)
     {
         return neighbours(v);
     }
-
 }
