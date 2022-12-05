@@ -2,13 +2,18 @@
 #include <cstdlib>
 #include <iostream>
 
+using namespace std;
+
 bool Graph::isEmpty()
 {
     if (head == NULL)
     {
         return true;
     }
-    return false;
+    else
+    {
+        return false;
+    }
 }
 bool Graph::isDirected()
 {
@@ -36,16 +41,121 @@ void Graph ::addVertex(vertex *&newVertex)
     newVertex->next = temp->next;
 }
 
-void Graph ::addEdge(vertex *&vertex1, vertex *&vertex2)
+void Graph ::addNeighbour(vertex *&v1, vertex *&v2)
+{
+
+    vertex *temp;
+    vertex *n;
+
+    temp = head;
+
+    while (temp != NULL)
+    {
+        if (temp->data == v1->data)
+        {
+            n = temp;
+
+            temp->neighbour = v2;
+            v2->next = n->neighbour;
+        }
+        else
+        {
+
+            temp = temp->next;
+        }
+    }
+}
+
+void Graph ::addEdge(vertex *&v1, vertex *&v2)
+{
+
+    vertex *temp;
+
+    temp = head;
+}
+
+void Graph ::removeNeighbour(vertex *&v1, vertex *&v2)
 {
 
     vertex *temp;
 
     temp = head;
 
-    vertex1->next = vertex2;
-    head->next = vertex1;
-    temp->next->next;
+    while (temp != NULL)
+    {
+
+        if (temp->data = v1->data)
+        {
+
+            vertex *n;
+
+            n = temp->neighbour;
+
+            while (n != NULL)
+            {
+
+                if (n->next->data == v2->data)
+                {
+
+                    n->next = n->next->next;
+
+                    break;
+                }
+                else
+                {
+
+                    n = n->next;
+                }
+            }
+        }
+        else
+        {
+
+            temp = temp->next;
+        }
+    }
+}
+
+bool Graph ::removeVertex(vertex *&v)
+{
+
+    vertex *temp;
+    vertex *n;
+
+    temp = head;
+
+    while (temp != NULL)
+    {
+
+        if (temp->next->data == v->data)
+        {
+
+            temp->next = temp->next->next;
+
+            n = temp;
+
+            while (n != NULL)
+            {
+
+                removeNeighbour(n, v);
+            }
+
+            return true;
+        }
+        else
+        {
+
+            temp = temp->next;
+        }
+    }
+
+    return false;
+}
+
+void Graph ::removeEdge(vertex *&v1, vertex *&v2)
+{
+
+    removeNeighbour(v1, v2);
 }
 
 int Graph::numVertices()
@@ -57,18 +167,21 @@ int Graph::numVertices()
         while (temp->next != NULL)
         {
             num++;
-            temp = temp->next;
         }
     }
     return 0;
 }
+
 int Graph::numEdge()
 {
+
     int numEdge = 0;
+
     if (isEmpty() != true)
     {
 
         vertex *temp = head;
+
         while (temp->next != NULL)
         {
             // counting neighbour of each vertex
@@ -157,5 +270,101 @@ int Graph::degree(vertex *v)
     else
     {
         return neighbours(v);
+    }
+}
+
+int Graph ::neighbours(vertex *&v)
+{
+
+    int numNeighbours = 0;
+
+    vertex *temp;
+    vertex *n;
+
+    temp = head;
+
+    while (temp != NULL)
+    {
+
+        if (temp->data == v->data)
+        {
+            /* code */
+
+            n = temp;
+
+            while (n->next != NULL)
+            {
+
+                numNeighbours++;
+
+                n = n->next;
+            }
+
+            break;
+        }
+        else
+        {
+
+            temp = temp->next;
+        }
+    }
+
+    return numNeighbours;
+}
+
+bool Graph ::neighbour(vertex *&v1, vertex *&v2)
+{
+
+    vertex *temp;
+    vertex *n;
+
+    temp = head;
+
+    while (temp != NULL)
+    {
+
+        if (temp->data == v1->data)
+        {
+
+            n = temp;
+
+            while (n != NULL)
+            {
+
+                if (n->data == v2->data)
+                {
+
+                    return true;
+                }
+                else
+                {
+
+                    n = n->next;
+                }
+            }
+        }
+        else
+        {
+
+            temp = temp->next;
+        }
+    }
+
+    return false;
+}
+
+void Graph ::display()
+{
+
+    vertex *temp;
+
+    temp = head->next;
+
+    while (temp != NULL)
+    {
+
+        cout << "\t" << temp->data << endl;
+
+        temp = temp->next;
     }
 }
