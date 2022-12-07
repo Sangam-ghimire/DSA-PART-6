@@ -81,6 +81,20 @@ void Graph :: addNeighbour(vertex *&v1, vertex *&v2){
     // delete temp;
     // delete n;
 
+    if (isDirected())
+    {
+        /* code */
+
+        v1->neighbour->addToHead(v2->data);
+
+    }       else{
+        
+        v1->neighbour->addToHead(v2->data);
+        v2->neighbour->addToHead(v1->data);
+
+    }
+    
+
 }
 
 void Graph :: addEdge(vertex *&v1 , vertex *&v2){
