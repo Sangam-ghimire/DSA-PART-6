@@ -214,9 +214,8 @@ void Graph ::removeEdge(vertex *vertex1, vertex *vertex2)
             {
                 temp->leftneighbour->rightneighbour = temp->rightneighbour;
                 temp->leftneighbour->rightneighbour = temp->leftneighbour;
-                std::cout<<"Sucessfully deleted"<<temp->data;
+                std::cout << "Sucessfully deleted" << temp->data;
                 delete temp;
-
             }
         }
     }
@@ -234,27 +233,18 @@ void Graph ::removeEdge(vertex *vertex1, vertex *vertex2)
 
 // }
 
-// int Graph::numVertices()
-// {
-//     vertex *temp = new vertex();
-
-//     temp = this->head;
-
-//     int num = 0;
-
-//     if (isEmpty() != true)
-//     {
-//         while (temp != NULL)
-//         {
-//             num++;
-//             temp = temp->next;
-//         }
-
-//         return num;
-//     }
-
-//     return 0;
-// }
+int Graph::numVertices()
+{
+    int countVertices = 0;
+    vertex *temp = new vertex();
+    temp = head;
+    while (temp != nullptr)
+    {
+        countVertices++;
+        temp = temp->nextVertex;
+    }
+    return countVertices;
+}
 
 // int Graph::numEdge()
 // {

@@ -53,7 +53,7 @@ public:
     // void removeNeighbour(vertex *vertex1, vertex *vertex2);
     // bool removeVertex(vertex *v);
     // int neighbours(vertex *v);
-    // int numVertices();
+    int numVertices();
     // int numEdge();
     // int indegree(vertex *v);
     // int outdegree(vertex *v);
