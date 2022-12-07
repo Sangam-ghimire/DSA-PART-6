@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include "linkedlist.h"
 using namespace std;
 
 class vertex
@@ -41,20 +40,20 @@ public:
 
     ~Graph() {}
 
+    void display();
+    void addVertex(vertex *newVertex);
     bool isEmpty();
     bool isDirected();
-    void addVertex(vertex *newVertex);
-    void addNeighbour(vertex *vertex1, vertex *vertex2);
-    void addEdge(vertex *vertex1, vertex *vertex2);
-    void removeNeighbour(vertex *vertex1, vertex *vertex2);
-    bool removeVertex(vertex *v);
-    void removeEdge(vertex *vertex1, vertex *vertex2);
-    int neighbours(vertex *v);
-    int numVertices();
-    int numEdge();
-    int indegree(vertex *v);
-    int outdegree(vertex *v);
-    int degree(vertex *v);
-    bool neighbour(vertex *vertex1, vertex *vertex2);
-    void display();
+    // void addNeighbour(vertex *vertex1, vertex *vertex2);
+    // void addEdge(vertex *vertex1, vertex *vertex2);
+    // void removeNeighbour(vertex *vertex1, vertex *vertex2);
+    // bool removeVertex(vertex *v);
+    // void removeEdge(vertex *vertex1, vertex *vertex2);
+    // int neighbours(vertex *v);
+    // int numVertices();
+    // int numEdge();
+    // int indegree(vertex *v);
+    // int outdegree(vertex *v);
+    // int degree(vertex *v);
+    // bool neighbour(vertex *vertex1, vertex *vertex2);
 };
