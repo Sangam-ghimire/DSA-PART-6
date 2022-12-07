@@ -9,10 +9,11 @@ bool Graph :: isEmpty()
     if (head == NULL)
     {
         return true;
-    }       else{
+    }
+    else
+    {
         return false;
     }
-
 }
 
 bool Graph :: isDirected()
@@ -23,7 +24,6 @@ bool Graph :: isDirected()
     }       else{
         return false;
     }
-
 }
 
 
@@ -46,7 +46,6 @@ void Graph :: addVertex(vertex *&newVertex){
 
     }
     
-
     // head = newVertex;
     // cout<<"\naddvertex";
     // newVertex->next = temp->next;
@@ -138,7 +137,8 @@ void Graph :: addEdge(vertex *&v1 , vertex *&v2){
 
 }
 
-void Graph :: removeNeighbour(vertex *&v1 , vertex *&v2){
+void Graph ::removeNeighbour(vertex *&v1, vertex *&v2)
+{
 
     // vertex *temp = new vertex();
 
@@ -281,10 +281,10 @@ bool Graph :: removeVertex(vertex *&v){
     
 }
 
-void Graph :: removeEdge(vertex *&v1 , vertex *&v2){
+void Graph ::removeEdge(vertex *&v1, vertex *&v2)
+{
 
-   removeNeighbour(v1,v2);
-
+    removeNeighbour(v1, v2);
 }
 
 int Graph :: neighbours(vertex *&v){
@@ -352,19 +352,18 @@ int Graph::numVertices()
         while (temp->next != NULL)
         {
             num++;
-            temp = temp->next;
         }
     }
 
     delete temp;
 
     return 0;
-
 }
 
 
 int Graph::numEdge()
 {
+
     int numEdge = 0;
 
     vertex *temp  = new vertex();
@@ -399,7 +398,6 @@ int Graph::numEdge()
     delete temp;
 
     return 0;
-
 }
 
 int Graph::indegree(vertex *v)
@@ -482,7 +480,6 @@ int Graph::degree(vertex *v)
     {
         return neighbours(v);
     }
-
 }
 
 
@@ -541,10 +538,9 @@ void Graph :: display(){
 
     while(temp->next != NULL){
 
-        cout<<"\t"<<temp -> data<<endl;
+        cout << "\t" << temp->data << endl;
 
         temp = temp->next;
-
     }
 
     delete temp;
