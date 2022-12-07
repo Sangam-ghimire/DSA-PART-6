@@ -44,6 +44,11 @@ int main()
         std::cout << "\nThe graph is not directed." << endl;
     }
     g->display();
+
+    std::cout << "adding edge";
+    vertex *f = new vertex(101);
+    g->addEdge(b, f);
+    g->display();
 };
 
 // cout << "\nNumber of Vertices of Graph are: " << num_vertices << endl;

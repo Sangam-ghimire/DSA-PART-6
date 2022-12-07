@@ -49,10 +49,10 @@ void Graph ::display()
     while (temp != NULL)
     {
         vertex *temp1 = temp;
-        std::cout << temp->data << " --> ";
+        std::cout << temp->data << "|->| ";
         while (temp1->rightneighbour != NULL)
         {
-            std::cout << temp1->rightneighbour->data << " --> ";
+            std::cout << temp1->rightneighbour->data << "|->|";
             temp1 = temp1->rightneighbour;
         }
 
