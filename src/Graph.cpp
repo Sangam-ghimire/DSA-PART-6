@@ -40,8 +40,6 @@ void Graph ::addVertex(vertex *newVertex)
 void Graph ::display()
 {
 
-    std::cout << "\nDisplay function call" << endl;
-
     vertex *temp = new vertex();
 
     temp = head;
@@ -274,7 +272,7 @@ int Graph::degree(vertex *v)
     }
     else
     {
-        outdegree(v);
+        return outdegree(v);
     }
 }
 
@@ -347,4 +345,6 @@ bool Graph::removeVertex(vertex *v)
             delete temp;
         }
     }
+
+    return false;
 };
