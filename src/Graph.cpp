@@ -14,14 +14,14 @@ void Graph ::addVertex(vertex *newVertex)
     }
     else
     {
-        std::cout << "Inside notisEmpty";
+        // std::cout << "Inside notisEmpty";
 
         vertex *temp = new vertex();
         temp = head;
 
         while (temp->nextVertex != NULL && temp->data != newVertex->data)
         {
-            std::cout << "Inside whileeisEmpty";
+            // std::cout << "Inside whileeisEmpty";
 
             temp = temp->nextVertex;
         }
@@ -84,6 +84,40 @@ bool Graph ::isEmpty()
         return false;
     }
 }
+void Graph ::addEdge(vertex *vertex1, vertex *vertex2)
+{
+
+    vertex *temp = new vertex();
+    temp = head;
+
+    while (temp != NULL && temp->data != vertex1->data)
+    {
+        temp = temp->nextVertex;
+    }
+
+    if (temp == NULL)
+    {
+        std::cout << "Vertex doesn't exists." << std::endl;
+    }
+
+    else
+    {
+        while (temp->rightneighbour != nullptr && temp->rightneighbour->data != vertex2->data)
+        {
+            temp = temp->rightneighbour;
+        }
+        if (temp->rightneighbour == NULL)
+        {
+            temp->rightneighbour = vertex2;
+            vertex2->leftneighbour = temp;
+        }
+
+        else
+        {
+            std::cout << "Duplicate Edge found.Erorr 404" << std::endl;
+        } // This will also not be used as not cli input taken
+    }
+}
 
 // void Graph :: addNeighbour(vertex *vertex1, vertex *vertex2){
 
@@ -99,23 +133,6 @@ bool Graph ::isEmpty()
 //         vertex2->neighbour->addToHead(vertex1->data);
 
 //     }
-
-// }
-
-// void Graph :: addEdge(vertex *vertex1 , vertex *vertex2){
-
-//     if(isDirected() == false)
-// 	{
-//         cout<<"inside false of add edge";
-// 		vertex1->neighbour->addToHead(vertex2->data);
-// 		vertex2->neighbour->addToHead(vertex1->data);
-// 	}
-
-// 	else{
-//                 cout<<"inside true of add edge";
-
-// 		vertex1->neighbour->addToHead(vertex2->data);
-// 	}
 
 // }
 

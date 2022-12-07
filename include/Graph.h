@@ -48,8 +48,8 @@ public:
     void addVertex(vertex *newVertex);
     bool isEmpty();
     bool isDirected();
+    void addEdge(vertex *vertex1, vertex *vertex2);
     // void addNeighbour(vertex *vertex1, vertex *vertex2);
-    // void addEdge(vertex *vertex1, vertex *vertex2);
     // void removeNeighbour(vertex *vertex1, vertex *vertex2);
     // bool removeVertex(vertex *v);
     // void removeEdge(vertex *vertex1, vertex *vertex2);
