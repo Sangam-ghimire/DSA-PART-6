@@ -50,74 +50,7 @@ int main()
     g->addEdge(b, f);
     g->display();
 
-    cout << "----Number Of Vertices in Graph----" << endl;
     int numVertices;
     numVertices = g->numVertices();
+    cout << "Number Of Vertices in Graph" << numVertices << endl;
 };
-
-// cout << "\nNumber of Vertices of Graph are: " << num_vertices << endl;
-
-// g->display();
-
-// bool n = g->isEmpty();
-// cout << "The value of n is " << (int)n;
-// g->addEdge(c, d);
-// // g->display();
-
-// g->addEdge(d,e);
-// g->addEdge(b,c);
-// g->addEdge(a,b);
-// g->addEdge(e,d);
-
-// g->removeVertex(e);
-
-// g->removeEdge(c,d);
-
-// int num_neighbour;
-
-// num_neighbour = g->neighbours(a);
-
-// cout<<"\nNumber of Neighbours of Vertex 'a' are: "<<num_neighbour<<endl;
-
-// int num_edge;
-
-// num_edge = g->numEdge();
-
-// cout << "\nNumber of Graph 'a' are: " << num_edge << endl;
-
-// int in_degree;
-
-// in_degree = g->indegree(e);
-
-// cout<<"\nNumber of In-Degree of Vertex 'e' are: "<<in_degree<<endl;
-
-// int out_degree;
-
-// out_degree = g->outdegree(d);
-
-// cout<<"\nNumber of Out-Degree of Vertex 'd' are: "<<out_degree<<endl;
-
-// int num_degree;
-
-// num_degree = g->degree(a);
-
-// cout<<"\nNumber of Degree of Vertex 'a' are: "<<num_degree<<endl;
-
-// bool neighbour;
-
-// neighbour = g->neighbour(d,e);
-
-// if (neighbour == 1)
-// {
-//     /* code */
-//     cout<<"\nThe vertex 'e' is a neighbour of vertex 'd'."<<endl;
-// }
-//         else{
-
-//             cout<<"\nThe vertex 'e' isnot a neighbour of vertex 'd'."<<endl;
-// }
-
-// delete a;
-// delete b;
-// delete c;
-// delete d;
