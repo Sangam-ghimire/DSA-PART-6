@@ -4,33 +4,35 @@
 
 class vertex
 {
+private:
+    int x;
 
 public:
+    vertex() {}
+    ~vertex() {}
 
     int data;
     vertex *neighbour;
     vertex *next;
-
 };
 
 class Graph
 {
 
 private:
-
     bool directed;
 
 public:
-
     vertex *head;
 
-    Graph(){
+    Graph()
+    {
 
         head = NULL;
-
     }
 
-    Graph(int dir) { 
+    Graph(int dir)
+    {
 
         head = NULL;
         directed = dir;
@@ -38,15 +40,14 @@ public:
 
     ~Graph() {}
 
-
     bool isEmpty();
     bool isDirected();
     void addVertex(vertex *&newVertex);
     void addNeighbour(vertex *&v1, vertex *&v2);
     void addEdge(vertex *&v1, vertex *&v2);
-    void removeNeighbour(vertex *&v1 , vertex *&v2);
+    void removeNeighbour(vertex *&v1, vertex *&v2);
     bool removeVertex(vertex *&v);
-    void removeEdge(vertex *&v1 , vertex *&v2);
+    void removeEdge(vertex *&v1, vertex *&v2);
     int numVertices();
     int numEdge();
     int indegree(vertex *v);
@@ -55,5 +56,4 @@ public:
     int neighbours(vertex *&v);
     bool neighbour(vertex *&v1, vertex *&v2);
     void display();
-
 };
