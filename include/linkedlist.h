@@ -19,15 +19,15 @@ class LinkedList{
     Node *head;
     Node *tail;
 
-    LinkedList();
+    LinkedList(){};
 
     bool is_empty();
     void addToHead(int a);
-    void addToTail(Node *&a);
-    void add(int x, Node *&pred);
+    void addToTail(int a);
+    void add(int x, Node *pred);
     void removeFromHead();
     void remove(int a);
-    Node* retrieve(int x , Node *&p);
+    Node* retrieve(int x , Node *p);
     bool search(int x);
     void traverse();
     int numNodes();

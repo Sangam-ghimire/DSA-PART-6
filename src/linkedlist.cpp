@@ -5,46 +5,56 @@ using namespace std;
 
 Node::Node(){}
 
-
-LinkedList :: LinkedList(){}
-
 bool LinkedList :: is_empty(){
     if(head == NULL) {
-        // cout<<"The linked list is empty"<<endl;
         return true;
 
     }   else {
-        // cout<<"The linked list is not empty"<<endl;
         return false;
     }
 }
 
 void LinkedList :: addToHead(int a){
 
-    Node *newNode = new Node();
+    Node *newNode = new Node();	
 
-    newNode -> data = a;
+    newNode->data = a;
 
-    if(head == NULL){
-        head = newNode;
-    }   else {
-        newNode -> next = head;
-        head = newNode;
+    newNode->next = this->head;
+    this->head = newNode;
+
+    if (this->tail == NULL)
+    {
+        this->tail = this->head;
     }
+
 }
 
-void LinkedList :: addToTail(Node *&a){
-    if (tail == NULL){
-        tail = a;
-        head = a;
+void LinkedList :: addToTail(int a ){
+
+    Node *newNode = new Node();
+
+    newNode->data = a;
+    newNode->next = NULL;
+
+    if (is_empty()){
+
+        tail = newNode;
+
+        if (head == NULL)
+        {
+            head = tail;
+        }
+        
+    
     }   else {
-        tail -> next = a;
+        tail -> next = newNode;
         tail = tail -> next;
 
     }
 }
 
-void LinkedList :: add(int x, Node *&pred){
+void LinkedList :: add(int x, Node *pred){
     Node *newNode =  new Node();
 
     newNode -> data = x;
@@ -52,43 +62,75 @@ void LinkedList :: add(int x, Node *&pred){
     newNode -> next = pred->next;
     pred -> next = newNode;
 
-    delete newNode;
+    // delete newNode;
 }
 
 void LinkedList :: removeFromHead(){
     Node *NodeToDelete = new Node();;
 
-    if(head == NULL){
-        cout<<"The linked list is empty."<<endl;
-    }   else{
+    if(is_empty() == false){
+
         NodeToDelete = head;
         head = NodeToDelete -> next;
-        delete NodeToDelete;
+
+        if (head == NULL)
+        {
+
+            tail = NULL;
+
+        }
+        
+
     }
 }
 
 void LinkedList :: remove(int a) {
-    Node *NodeToDelete = new Node();
-    Node *temp = new Node();
 
-    NodeToDelete = head;
-    temp = head;
-
-    do{
-        if (temp -> data == a){
-            break;
-        }   else {
-            temp = temp -> next;
-            NodeToDelete = temp;
+    if (is_empty() == false)
+    {
+        if (this->head->data == a)
+        {
+            
+            this->removeFromHead();
         }
-    }   while(temp != NULL);
 
-    delete temp;
-    delete NodeToDelete;
+        else
+        {
+            Node *temp = this->head->next;
+            Node *prev = this->head;
+            while (temp != NULL)
+            {
+                if (temp->data == a)
+                {
+                    break;
+                }
+
+                else
+                {
+                    temp = temp->next;
+                    prev = prev->next;
+                }
+            }
+
+            if (temp != NULL)
+            {
+
+                prev->next = temp->next;
+                temp->next = NULL;
+
+                // delete temp;
+                
+                if (prev->next == NULL)
+                {
+                    this->tail = prev;
+                }
+            }
+        }
+    }
 }
 
 
-Node* LinkedList :: retrieve(int x , Node *&p){
+Node* LinkedList :: retrieve(int x , Node *p){
 
     Node *temp = new Node();
     // Node result;
@@ -113,7 +155,7 @@ Node* LinkedList :: retrieve(int x , Node *&p){
     
     }
 
-    delete temp;
+    // delete temp;
     // delete result;
 }
 
@@ -139,27 +181,31 @@ bool LinkedList :: search(int x){
         return false;
     }
 
-    delete temp;
-
 
 }
 
 void LinkedList ::  traverse(){
 
-    Node *temp = new Node();
+    Node *temp;
 
     temp = head;
 
-    if(head == NULL){
-        cout<<"The linked list is empty"<<endl;
-    }   else {
-        do{
+    // if(head == NULL){
+    //     cout<<"The linked list is empty"<<endl;
+    // }   else {
+
+        while (temp != 0)
+        {
+            /* code */
+
             cout<<"\n" << temp -> data <<endl;
             temp = temp -> next;
-        } while (temp != NULL);
-    }
 
-    delete temp;
+        }
+        
+    // }
+
+    // delete temp;
 
 
 }

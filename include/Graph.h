@@ -21,6 +21,14 @@ public:
         
     }
 
+    vertex(int x){
+        data = x;
+        next = NULL;
+        neighbour = NULL;
+    }
+
+    ~vertex(){}
+
 };
 
 class Graph
@@ -54,19 +62,19 @@ public:
 
     bool isEmpty();
     bool isDirected();
-    void addVertex(vertex *&newVertex);
-    void addNeighbour(vertex *&v1, vertex *&v2);
-    void addEdge(vertex *&v1, vertex *&v2);
-    void removeNeighbour(vertex *&v1 , vertex *&v2);
-    bool removeVertex(vertex *&v);
-    void removeEdge(vertex *&v1 , vertex *&v2);
-    int neighbours(vertex *&v);
+    void addVertex(vertex *newVertex);
+    void addNeighbour(vertex *vertex1, vertex *vertex2);
+    void addEdge(vertex *vertex1, vertex *vertex2);
+    void removeNeighbour(vertex *vertex1 , vertex *vertex2);
+    bool removeVertex(vertex *v);
+    void removeEdge(vertex *vertex1 , vertex *vertex2);
+    int neighbours(vertex *v);
     int numVertices();
     int numEdge();
     int indegree(vertex *v);
     int outdegree(vertex *v);
     int degree(vertex *v);
-    bool neighbour(vertex *&v1, vertex *&v2);
+    bool neighbour(vertex *vertex1, vertex *vertex2);
     void display();
 
 };
