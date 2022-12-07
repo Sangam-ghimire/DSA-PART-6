@@ -17,15 +17,14 @@ public:
     ~vertex() {}
 
     int data;
-    Vertex *next;
-    Vertex *prev;
-    Vertex *rightneighbour;
-    Vertex *leftneighbour;
+    vertex *next;
+    vertex *prev;
+    vertex *rightneighbour;
+    vertex *leftneighbour;
 };
 
 class Graph
 {
-
 private:
     bool directed;
 
