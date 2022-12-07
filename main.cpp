@@ -49,6 +49,10 @@ int main()
     vertex *f = new vertex(101);
     g->addEdge(b, f);
     g->display();
+
+    cout << "----Number Of Vertices in Graph----" << endl;
+    int numVertices;
+    numVertices = g->numVertices();
 };
 
 // cout << "\nNumber of Vertices of Graph are: " << num_vertices << endl;
