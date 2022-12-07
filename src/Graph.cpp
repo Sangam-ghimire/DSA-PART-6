@@ -311,7 +311,7 @@ bool Graph ::neighbour(vertex *vertex1, vertex *vertex2)
 
 bool Graph::removeVertex(vertex *v)
 {
-    vertex *temp = new vertex();
+   vertex *temp = new vertex();
     temp = head;
     while (temp != NULL && temp->data != v->data)
     {
@@ -320,6 +320,7 @@ bool Graph::removeVertex(vertex *v)
     if (temp == NULL)
     {
         std::cout << "Vertex doesn't exist" << std::endl;
+        return false;
     }
     else
     {
@@ -335,7 +336,7 @@ bool Graph::removeVertex(vertex *v)
         }
         vertex *remove = new vertex();
         remove = head;
-        while (remove != nullptr)
+        while (remove != NULL)
         {
             if (neighbour(remove, v))
             {
@@ -344,7 +345,7 @@ bool Graph::removeVertex(vertex *v)
             remove = remove->nextVertex;
             delete temp;
         }
+        return true;
     }
-
     return false;
 };

@@ -26,10 +26,7 @@ int main()
     g->addVertex(c);
     g->addVertex(d);
     g->addVertex(e);
-    // g->addVertex(f);
 
-    // cout<<"\nRemoving a vertex: "<<endl;
-    // g->removeVertex(e);
 
     if (g->isEmpty() == 1)
     {
@@ -56,15 +53,10 @@ int main()
     g->addEdge(b,f);
     g->addEdge(a,b);
     g->addEdge(b,c);
-    // g->addEdge(c,d);
-    // g->addEdge(d,e);
-    // g->addEdge(e,f);
-    // g->addEdge(a,e);
-    // g->addEdge(b,d);
 
     cout<<"\nRemoving a edge: "<<endl;
 
-    // g->removeEdge(b,c);
+    g->removeEdge(b,c);
 
     g->display();
 
@@ -120,56 +112,4 @@ int main()
 
 };
 
-// cout << "\nNumber of Vertices of Graph are: " << num_vertices << endl;
 
-// g->display();
-
-// bool n = g->isEmpty();
-// cout << "The value of n is " << (int)n;
-// g->addEdge(c, d);
-// // g->display();
-
-// g->addEdge(d,e);
-// g->addEdge(b,c);
-// g->addEdge(a,b);
-// g->addEdge(e,d);
-
-// g->removeVertex(e);
-
-// g->removeEdge(c,d);
-
-
-
-// int num_edge;
-
-// num_edge = g->numEdge();
-
-// cout << "\nNumber of Graph 'a' are: " << num_edge << endl;
-
-// int in_degree;
-
-// in_degree = g->indegree(e);
-
-// cout<<"\nNumber of In-Degree of Vertex 'e' are: "<<in_degree<<endl;
-
-
-
-
-// bool neighbour;
-
-// neighbour = g->neighbour(d,e);
-
-// if (neighbour == 1)
-// {
-//     /* code */
-//     cout<<"\nThe vertex 'e' is a neighbour of vertex 'd'."<<endl;
-// }
-//         else{
-
-//             cout<<"\nThe vertex 'e' isnot a neighbour of vertex 'd'."<<endl;
-// }
-
-// delete a;
-// delete b;
-// delete c;
-// delete d;
