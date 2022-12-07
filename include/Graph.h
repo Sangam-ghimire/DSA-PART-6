@@ -1,9 +1,6 @@
 #pragma once
-
 #include <iostream>
-
 #include "linkedlist.h"
-
 using namespace std;
 
 class vertex
@@ -13,26 +10,17 @@ private:
 
 public:
     vertex() {}
+    vertex(int x)
+    {
+        data = x;
+    }
     ~vertex() {}
 
     int data;
-    vertex *next;
-    LinkedList *neighbour;
-
-    // LinkedList l;    
-
-    vertex(){
-        
-    }
-
-    vertex(int x){
-        data = x;
-        next = NULL;
-        neighbour = NULL;
-    }
-
-    ~vertex(){}
-
+    Vertex *next;
+    Vertex *prev;
+    Vertex *rightneighbour;
+    Vertex *leftneighbour;
 };
 
 class Graph
@@ -57,7 +45,6 @@ public:
         directed = dir;
 
         // cout<<"\nParameter Constructor"<<endl;
-
     }
 
     ~Graph() {}
@@ -67,9 +54,9 @@ public:
     void addVertex(vertex *newVertex);
     void addNeighbour(vertex *vertex1, vertex *vertex2);
     void addEdge(vertex *vertex1, vertex *vertex2);
-    void removeNeighbour(vertex *vertex1 , vertex *vertex2);
+    void removeNeighbour(vertex *vertex1, vertex *vertex2);
     bool removeVertex(vertex *v);
-    void removeEdge(vertex *vertex1 , vertex *vertex2);
+    void removeEdge(vertex *vertex1, vertex *vertex2);
     int neighbours(vertex *v);
     int numVertices();
     int numEdge();
