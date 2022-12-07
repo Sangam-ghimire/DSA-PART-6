@@ -49,10 +49,9 @@ public:
     bool isEmpty();
     bool isDirected();
     void addEdge(vertex *vertex1, vertex *vertex2);
-    // void addNeighbour(vertex *vertex1, vertex *vertex2);
+    void removeEdge(vertex *vertex1, vertex *vertex2);
     // void removeNeighbour(vertex *vertex1, vertex *vertex2);
     // bool removeVertex(vertex *v);
-    // void removeEdge(vertex *vertex1, vertex *vertex2);
     // int neighbours(vertex *v);
     // int numVertices();
     // int numEdge();

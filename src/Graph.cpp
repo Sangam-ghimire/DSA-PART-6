@@ -119,23 +119,6 @@ void Graph ::addEdge(vertex *vertex1, vertex *vertex2)
     }
 }
 
-// void Graph :: addNeighbour(vertex *vertex1, vertex *vertex2){
-
-//     if (isDirected())
-//     {
-//         /* code */
-
-//         vertex1->neighbour->addToHead(vertex2->data);
-
-//     }       else{
-
-//         vertex1->neighbour->addToHead(vertex2->data);
-//         vertex2->neighbour->addToHead(vertex1->data);
-
-//     }
-
-// }
-
 // void Graph ::removeNeighbour(vertex *vertex1, vertex *vertex2)
 // {
 
@@ -145,15 +128,14 @@ void Graph ::addEdge(vertex *vertex1, vertex *vertex2)
 //     {
 //         /* code */
 
-//         vertex1 -> neighbour -> remove(vertex2->data);
-
-//     }       else{
-
-//         vertex1 -> neighbour -> remove(vertex2->data);
-//         vertex2 -> neighbour -> remove(vertex1->data);
-
+//         vertex1->neighbour->remove(vertex2->data);
 //     }
+//     else
+//     {
 
+//         vertex1->neighbour->remove(vertex2->data);
+//         vertex2->neighbour->remove(vertex1->data);
+//     }
 // }
 
 // bool Graph :: removeVertex(vertex *v){
@@ -199,11 +181,46 @@ void Graph ::addEdge(vertex *vertex1, vertex *vertex2)
 
 // }
 
-// void Graph ::removeEdge(vertex *vertex1, vertex *vertex2)
-// {
+void Graph ::removeEdge(vertex *vertex1, vertex *vertex2)
+{
+    vertex *temp = new vertex();
+    temp = head;
+    while (temp != NULL && temp->data != vertex1->data)
+    {
+        temp = temp->nextVertex;
+    }
+    if (temp == NULL)
+    {
+        std::cout << "Vertex" << vertex1->data << "doesn't exists." << std::endl;
+    }
+    else
+    {
+        temp = temp->rightneighbour;
+        while (temp != NULL && temp->data != vertex2->data)
+        {
+            temp = temp->rightneighbour;
+        }
+        if (temp == NULL)
+        {
+            std::cout << "Edge doesn't exists" << std::endl;
+        }
+        else
+        {
+            if (temp->rightneighbour == NULL)
+            {
+                delete temp;
+            }
+            else
+            {
+                temp->leftneighbour->rightneighbour = temp->rightneighbour;
+                temp->leftneighbour->rightneighbour = temp->leftneighbour;
+                std::cout<<"Sucessfully deleted"<<temp->data;
+                delete temp;
 
-//     removeNeighbour(vertex1, vertex2);
-// }
+            }
+        }
+    }
+}
 
 // int Graph :: neighbours(vertex *v){
 
