@@ -1,10 +1,12 @@
 #include "Graph.h"
+#include "linkedlist.h"
+#include "linkedlist.cpp"
 #include <cstdlib>
 #include <iostream>
 
 using namespace std;
 
-bool Graph::isEmpty()
+bool Graph :: isEmpty()
 {
     if (head == NULL)
     {
@@ -15,204 +17,243 @@ bool Graph::isEmpty()
         return false;
     }
 }
-bool Graph::isDirected()
+
+bool Graph :: isDirected()
 {
     if (directed == true)
     {
         return true;
-    }
-    return false;
-}
-// add vertex
-// add edge
-// remove vertex
-// remove edge
-// neighbour
-// neighbour
-
-void Graph ::addVertex(vertex *&newVertex)
-{
-
-    vertex *temp;
-
-    temp = head;
-
-    head->next = newVertex;
-    newVertex->next = temp->next;
-}
-
-void Graph ::addNeighbour(vertex *&v1, vertex *&v2)
-{
-
-    vertex *temp;
-    vertex *n;
-
-    temp = head;
-
-    while (temp != NULL)
-    {
-        if (temp->data == v1->data)
-        {
-            n = temp;
-
-            temp->neighbour = v2;
-            v2->next = n->neighbour;
-        }
-        else
-        {
-
-            temp = temp->next;
-        }
+    }       else{
+        return false;
     }
 }
 
-void Graph ::addEdge(vertex *&v1, vertex *&v2)
-{
 
-    vertex *temp;
+void Graph :: addVertex(vertex *newVertex){
 
-    temp = head;
+    newVertex -> next = this ->head;
+    this -> head = newVertex;
+
 }
 
-void Graph ::removeNeighbour(vertex *&v1, vertex *&v2)
+void Graph :: addNeighbour(vertex *vertex1, vertex *vertex2){
+
+    if (isDirected())
+    {
+        /* code */
+
+        vertex1->neighbour->addToHead(vertex2->data);
+
+    }       else{
+        
+        vertex1->neighbour->addToHead(vertex2->data);
+        vertex2->neighbour->addToHead(vertex1->data);
+
+    }
+    
+
+}
+
+void Graph :: addEdge(vertex *vertex1 , vertex *vertex2){
+
+
+    if(isDirected() == false)
+	{
+        cout<<"inside false of add edge";
+		vertex1->neighbour->addToHead(vertex2->data);
+		vertex2->neighbour->addToHead(vertex1->data);
+	}
+	
+	else{
+                cout<<"inside true of add edge";
+
+		vertex1->neighbour->addToHead(vertex2->data);
+	}
+
+
+
+}
+
+void Graph ::removeNeighbour(vertex *vertex1, vertex *vertex2)
 {
 
-    vertex *temp;
+    vertex *temp = new vertex();
+
+    if (isDirected())
+    {
+        /* code */
+
+        vertex1 -> neighbour -> remove(vertex2->data);
+
+    }       else{
+
+        vertex1 -> neighbour -> remove(vertex2->data);
+        vertex2 -> neighbour -> remove(vertex1->data);
+        
+    }
+    
+}
+
+
+bool Graph :: removeVertex(vertex *v){
+
+    vertex *temp = new vertex();
+    vertex *n = new vertex();
 
     temp = head;
 
-    while (temp != NULL)
-    {
+    if(!isEmpty()){
 
-        if (temp->data = v1->data)
-        {
+        return false;
 
-            vertex *n;
+    }       else{
 
-            n = temp->neighbour;
+        while(temp != NULL){
 
-            while (n != NULL)
-            {
+            if(temp->next->data == v->data){
 
-                if (n->next->data == v2->data)
-                {
+                temp -> next = v -> next;
+                
+                n = head;
 
-                    n->next = n->next->next;
+                while(n!=NULL){
 
-                    break;
-                }
-                else
-                {
+                    removeNeighbour(*&n , *&v);
 
                     n = n->next;
+
                 }
-            }
-        }
-        else
-        {
 
-            temp = temp->next;
-        }
-    }
-}
+                return true;
 
-bool Graph ::removeVertex(vertex *&v)
-{
-
-    vertex *temp;
-    vertex *n;
-
-    temp = head;
-
-    while (temp != NULL)
-    {
-
-        if (temp->next->data == v->data)
-        {
-
-            temp->next = temp->next->next;
-
-            n = temp;
-
-            while (n != NULL)
-            {
-
-                removeNeighbour(n, v);
+            }       else{
+                temp = temp -> next;
             }
 
-            return true;
         }
-        else
-        {
 
-            temp = temp->next;
-        }
+
     }
 
     return false;
+
+
+    
 }
 
-void Graph ::removeEdge(vertex *&v1, vertex *&v2)
+void Graph ::removeEdge(vertex *vertex1, vertex *vertex2)
 {
 
-    removeNeighbour(v1, v2);
+    removeNeighbour(vertex1, vertex2);
 }
+
+int Graph :: neighbours(vertex *v){
+
+    int numNeighbours = 0;
+
+    vertex *temp = new vertex();
+
+    numNeighbours = v -> neighbour -> numNodes();
+
+    return numNeighbours;
+
+
+
+}
+
 
 int Graph::numVertices()
 {
+    vertex *temp  = new vertex();
+
+    temp = this -> head;
+
+    int num = 0;
+
     if (isEmpty() != true)
     {
-        vertex *temp = head;
-        int num = 0;
-        while (temp->next != NULL)
+        while (temp != NULL)
         {
             num++;
+            temp = temp -> next;
         }
+
+        return num;
     }
+
     return 0;
 }
+
 
 int Graph::numEdge()
 {
 
+   { // int numEdge = 0;
+
+    // vertex *temp  = new vertex();
+
+    // if (isEmpty() != true)
+    // {
+
+    //     temp = head;
+
+    //     while (temp->next != NULL)
+    //     {
+    //         // counting neighbour of each vertex
+
+    //         numEdge = numEdge + temp -> neighbour -> numNodes();
+
+    //         temp = temp->next;
+
+    //     } // euta vetex ko
+
+    //     if (directed == true)
+    //     {
+    //         return numEdge;
+    //     }
+    //     else
+    //     {
+    //         // since each edge is double in undirected graph
+    //         numEdge = numEdge % 2;
+    //         return numEdge;
+    //     }
+
+    }
+
+    cout<<"\nnumedge function called"<<endl;
+
     int numEdge = 0;
 
-    if (isEmpty() != true)
-    {
-
-        vertex *temp = head;
-
-        while (temp->next != NULL)
-        {
-            // counting neighbour of each vertex
-            while (temp->neighbour != NULL)
-            {
-                numEdge++;
-                temp = temp->neighbour;
-            }
-            temp = temp->next;
-        } // euta vetex ko
-
-        if (directed == true)
-        {
-            return numEdge;
-        }
-        else
-        {
-            // since each edge is double in undirected graph
-            numEdge = numEdge % 2;
-            return numEdge;
-        }
-    }
+	vertex *temp = new vertex();
+	temp = this->head;
+	
+	while(temp != NULL)
+	{
+		numEdge += temp->neighbour->numNodes();
+		temp = temp->next;
+	}
+	if(!this->isDirected())
+	{
+		return numEdge/2; 
+	}
+	else
+	{
+		return numEdge;
+	}
+	
+	delete temp;
+    
     return 0;
 }
 
 int Graph::indegree(vertex *v)
 {
+    vertex *temp = new vertex();
+
     if (directed == true)
     {
         // we have to check whose neighbour does the given vertices is
-        vertex *temp = head;
+        temp = head;
         int num = 0;
         // checking all the edges
         while (temp->next != NULL)
@@ -224,6 +265,7 @@ int Graph::indegree(vertex *v)
                 {
                     num++;
                 }
+
             }
 
             temp = temp->next;
@@ -237,28 +279,41 @@ int Graph::indegree(vertex *v)
 
         return degree(v);
     }
+
+    
+
+
 }
 
 int Graph::outdegree(vertex *v)
 {
 
-    if (directed == true)
-    {
-        vertex *temp = head;
-        int num = 0;
-        while (temp->neighbour != NULL)
-        {
-            num++;
-            temp = temp->neighbour;
-        }
-        return num;
-    }
-    else
-    {
-        std::cout << "It is not a directed graph.So, there exists only degree" << std::endl;
+    // vertex *temp = new vertex();
 
-        return degree(v);
-    }
+    // if (directed == true)
+    // {
+        // temp = head;
+        int num = 0;
+        // while (temp->neighbour != NULL)
+        // {
+        //     num++;
+        //     temp = temp->neighbour;
+        // }
+
+        num = v -> neighbour -> numNodes();
+
+        return num;
+    // }
+    // else
+    // {
+    //     cout << "It is not a directed graph.So, there exists only degree" << endl;
+
+    //     return degree(v);
+    // }
+
+    // 
+
+
 }
 
 int Graph::degree(vertex *v)
@@ -273,98 +328,27 @@ int Graph::degree(vertex *v)
     }
 }
 
-int Graph ::neighbours(vertex *&v)
-{
 
-    int numNeighbours = 0;
+bool Graph :: neighbour(vertex *vertex1 , vertex *vertex2){
 
-    vertex *temp;
-    vertex *n;
 
-    temp = head;
+    return vertex1 -> neighbour -> search(vertex2->data);
 
-    while (temp != NULL)
-    {
-
-        if (temp->data == v->data)
-        {
-            /* code */
-
-            n = temp;
-
-            while (n->next != NULL)
-            {
-
-                numNeighbours++;
-
-                n = n->next;
-            }
-
-            break;
-        }
-        else
-        {
-
-            temp = temp->next;
-        }
-    }
-
-    return numNeighbours;
 }
 
-bool Graph ::neighbour(vertex *&v1, vertex *&v2)
-{
+void Graph :: display(){
 
-    vertex *temp;
-    vertex *n;
+    cout<<"\nDisplay function call"<<endl;
 
-    temp = head;
+    vertex *temp = new vertex();
 
-    while (temp != NULL)
-    {
-
-        if (temp->data == v1->data)
-        {
-
-            n = temp;
-
-            while (n != NULL)
-            {
-
-                if (n->data == v2->data)
-                {
-
-                    return true;
-                }
-                else
-                {
-
-                    n = n->next;
-                }
-            }
-        }
-        else
-        {
-
-            temp = temp->next;
-        }
-    }
-
-    return false;
-}
-
-void Graph ::display()
-{
-
-    vertex *temp;
-
-    temp = head->next;
-
-    while (temp != NULL)
-    {
+    temp = this -> head;
+   
+    while(temp != NULL){
 
         cout << "\t" << temp->data << endl;
 
         temp = temp->next;
     }
+
 }

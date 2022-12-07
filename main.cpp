@@ -12,75 +12,119 @@ int main()
 
     cin>>x;
 
-    Graph g(x);
+    Graph *g = new Graph(x);
 
-    vertex *v1;
-    vertex *v2;
-    vertex *v3;
-    vertex *v4;
-    vertex *v5;
-    vertex *v6;
-    vertex *v7;
-    vertex *v8;
-    vertex *v9;
-    vertex *v10;
 
-    v1 -> data = 3;
-    v2 -> data = 5;
-    v3 -> data = 6;
-    v4 -> data = 2;
-    v5 -> data = 8;
-    v6 -> data = 12;
-    v7 -> data = 34;
-    v8 -> data = 45;
-    v9 -> data = 53;
-    v10 -> data = 23;
+    vertex *a = new vertex(1);
+    vertex *b = new vertex(2);
+    vertex *c = new vertex(3);
+    vertex *d =  new vertex(4);
+    vertex *e = new vertex(10);
 
     
-    if(g.isEmpty() == 1){
+    {// if(g->isEmpty() == 1){
 
-        cout<<"\nThe graph is not empty."<<endl;
+    //     cout<<"\nThe graph is empty."<<endl;
 
-    }       else{
+    // }       else{
 
-        cout<<"\nThe graph is empty."<<endl;
-    }
+    //     cout<<"\nThe graph is not empty."<<endl;
+    // }
 
-    if (g.isDirected() == 1)
-    {
-        /* code */
-        cout<<"\nThe graph is directed."<<endl;
+    // if (g->isDirected() == 1)
+    // {
+    //     /* code */
+    //     cout<<"\nThe graph is directed."<<endl;
 
-    }       else{
+    // }       else{
 
-        cout<<"\nThe graph is not directed."<<endl;
+    //     cout<<"\nThe graph is not directed."<<endl;
 
+    // }
     }
     
-    g.addVertex(v1);
-    g.addVertex(v2);
-    g.addVertex(v3);
-    g.addVertex(v4);
-    g.addVertex(v5);
-    g.addVertex(v6);
-    g.addVertex(v7);
-    g.addVertex(v8);
-    g.addVertex(v9);
-    g.addVertex(v10);
 
-    g.addEdge(v1,v2);
-    g.addEdge(v3,v5);
-    g.addEdge(v7,v9);
-    g.addEdge(v6,v4);
-    g.addEdge(v5,v1);
-    g.addEdge(v3,v10);
-    g.addEdge(v6,v9);
+    g->addVertex(a);
+    g->addVertex(b);
+    g->addVertex(c);
+    g->addVertex(d);
+    g->addVertex(e);
 
-    g.removeVertex(v3);
-    g.removeVertex(v5);
-    g.removeVertex(v9);
+    int num_vertices;
 
-    g.display();
+    num_vertices = g->numVertices();
+
+    cout<<"\nNumber of Vertices of Graph are: "<<num_vertices<<endl;
+    
+    g->display();
+
+    bool n=g->isEmpty();
+        cout<<"The value of n is "<< (int)n;
+    g->addEdge(c,d);
+        // g->display();
+
+    
+    // g->addEdge(d,e);
+    // g->addEdge(b,c);
+    // g->addEdge(a,b);
+    // g->addEdge(e,d);
+
+
+    // g->removeVertex(e);
+
+    // g->removeEdge(c,d);
+
+    // int num_neighbour;
+
+    // num_neighbour = g->neighbours(a);
+
+    // cout<<"\nNumber of Neighbours of Vertex 'a' are: "<<num_neighbour<<endl;
+
+    int num_edge;
+
+    num_edge = g->numEdge();
+
+    cout<<"\nNumber of Graph 'a' are: "<<num_edge<<endl;
+
+    // int in_degree;
+
+    // in_degree = g->indegree(e);
+
+    // cout<<"\nNumber of In-Degree of Vertex 'e' are: "<<in_degree<<endl;
+
+    // int out_degree;
+
+    // out_degree = g->outdegree(d);
+
+    // cout<<"\nNumber of Out-Degree of Vertex 'd' are: "<<out_degree<<endl;
+
+    // int num_degree;
+
+    // num_degree = g->degree(a);
+
+    // cout<<"\nNumber of Degree of Vertex 'a' are: "<<num_degree<<endl;
+
+
+    // bool neighbour;
+
+    // neighbour = g->neighbour(d,e);
+
+    // if (neighbour == 1)
+    // {
+    //     /* code */
+    //     cout<<"\nThe vertex 'e' is a neighbour of vertex 'd'."<<endl; 
+    // }
+    //         else{
+                
+    //             cout<<"\nThe vertex 'e' isnot a neighbour of vertex 'd'."<<endl; 
+    // }
+    
+
+
+    // delete a;
+    // delete b;
+    // delete c;
+    // delete d;
 
 
 
