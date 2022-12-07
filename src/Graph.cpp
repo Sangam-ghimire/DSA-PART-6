@@ -7,8 +7,34 @@ using namespace std;
 void Graph ::addVertex(vertex *newVertex)
 {
 
-    newVertex->next = this->head;
-    this->head = newVertex;
+    if (isEmpty())
+    {
+        std::cout << "Inside isEmpty";
+        head = newVertex;
+    }
+    else
+    {
+        std::cout << "Inside notisEmpty";
+
+        vertex *temp = new vertex();
+        temp = head;
+
+        while (temp->nextVertex != NULL && temp->data != newVertex->data)
+        {
+            std::cout << "Inside whileeisEmpty";
+
+            temp = temp->nextVertex;
+        }
+        if (temp->nextVertex == NULL)
+        {
+            temp->nextVertex = newVertex;
+            newVertex->prevVertex = temp;
+        }
+        else
+        {
+            std::cout << "Vertex already exists" << std::endl;
+        }
+    }
 }
 
 void Graph ::display()
@@ -18,14 +44,20 @@ void Graph ::display()
 
     vertex *temp = new vertex();
 
-    temp = this->head;
+    temp = head;
 
     while (temp != NULL)
     {
+        vertex *temp1 = temp;
+        std::cout << temp->data << " --> ";
+        while (temp1->rightneighbour != NULL)
+        {
+            std::cout << temp1->rightneighbour->data << " --> ";
+            temp1 = temp1->rightneighbour;
+        }
 
-        cout << "\t" << temp->data << endl;
-
-        temp = temp->next;
+        std::cout << std::endl;
+        temp = temp->nextVertex;
     }
 }
 

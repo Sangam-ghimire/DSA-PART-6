@@ -12,12 +12,16 @@ public:
     vertex(int x)
     {
         data = x;
+        nextVertex = NULL;
+        prevVertex = NULL;
+        rightneighbour = NULL;
+        leftneighbour = NULL;
     }
     ~vertex() {}
 
     int data;
-    vertex *next;
-    vertex *prev;
+    vertex *nextVertex;
+    vertex *prevVertex;
     vertex *rightneighbour;
     vertex *leftneighbour;
 };
@@ -28,7 +32,7 @@ private:
     bool directed;
 
 public:
-    vertex *head;
+    vertex *head = NULL;
 
     Graph() {}
 

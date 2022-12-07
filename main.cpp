@@ -43,7 +43,7 @@ int main()
     {
         std::cout << "\nThe graph is not directed." << endl;
     }
-    // g->display();
+    g->display();
 };
 
 // cout << "\nNumber of Vertices of Graph are: " << num_vertices << endl;
