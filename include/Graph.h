@@ -31,18 +31,11 @@ private:
 public:
     vertex *head;
 
-    Graph()
-    {
-
-        head = NULL;
-    }
+    Graph() {}
 
     Graph(int dir)
     {
-
-        head = NULL;
         directed = dir;
-
         // cout<<"\nParameter Constructor"<<endl;
     }
 
