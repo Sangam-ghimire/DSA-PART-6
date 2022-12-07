@@ -14,36 +14,41 @@ int main()
 
     Graph g(x);
 
-    vertex *v1;
-    vertex *v2;
-    vertex *v3;
-    vertex *v4;
-    vertex *v5;
-    vertex *v6;
-    vertex *v7;
-    vertex *v8;
-    vertex *v9;
-    vertex *v10;
+
+    vertex *v1 = new vertex();
+    vertex *v2 = new vertex();
+    // vertex *v3 = new vertex();
+    // vertex *v4 =  new vertex();
+    // vertex *v5 = new vertex();
+    // vertex *v6 = new vertex();
+    // vertex *v7 = new vertex();
+    // vertex *v8 = new vertex();
+    // vertex *v9 = new vertex();
+    // vertex *v10 = new vertex();
+
+
 
     v1 -> data = 3;
     v2 -> data = 5;
-    v3 -> data = 6;
-    v4 -> data = 2;
-    v5 -> data = 8;
-    v6 -> data = 12;
-    v7 -> data = 34;
-    v8 -> data = 45;
-    v9 -> data = 53;
-    v10 -> data = 23;
+    // v3 -> data = 6;
+    // v4 -> data = 2;
+    // v5 -> data = 8;
+    // v6 -> data = 12;
+    // v7 -> data = 34;
+    // v8 -> data = 45;
+    // v9 -> data = 53;
+    // v10 -> data = 23;
+
+    // cout<<"\t main1"<<endl;
 
     
     if(g.isEmpty() == 1){
 
-        cout<<"\nThe graph is not empty."<<endl;
+        cout<<"\nThe graph is empty."<<endl;
 
     }       else{
 
-        cout<<"\nThe graph is empty."<<endl;
+        cout<<"\nThe graph is not empty."<<endl;
     }
 
     if (g.isDirected() == 1)
@@ -57,30 +62,36 @@ int main()
 
     }
     
-    g.addVertex(v1);
-    g.addVertex(v2);
-    g.addVertex(v3);
-    g.addVertex(v4);
-    g.addVertex(v5);
-    g.addVertex(v6);
-    g.addVertex(v7);
-    g.addVertex(v8);
-    g.addVertex(v9);
-    g.addVertex(v10);
+    g.addVertex(*&v1);
+    g.addVertex(*&v2);
+    // g.addVertex(*&v3);
+    // g.addVertex(*&v4);
+    // g.addVertex(*&v5);
+    // g.addVertex(*&v6);
+    // g.addVertex(*&v7);
+    // g.addVertex(*&v8);
+    // g.addVertex(*&v9);
+    // g.addVertex(*&v10);
+    
 
-    g.addEdge(v1,v2);
-    g.addEdge(v3,v5);
-    g.addEdge(v7,v9);
-    g.addEdge(v6,v4);
-    g.addEdge(v5,v1);
-    g.addEdge(v3,v10);
-    g.addEdge(v6,v9);
+    g.addEdge(*&v1,*&v2);
+    // g.addEdge(*&v3,*&v5);
+    // g.addEdge(*&v7,*&v9);
+    // g.addEdge(*&v6,*&v4);
+    // g.addEdge(*&v5,*&v1);
+    // g.addEdge(*&v3,*&v10);
+    // g.addEdge(*&v6,*&v9);
 
-    g.removeVertex(v3);
-    g.removeVertex(v5);
-    g.removeVertex(v9);
+    // g.removeVertex(*&v3);
+    // g.removeVertex(*&v5);
+    // g.removeVertex(*&v9);
+
+    cout<<"\nmain3"<<endl;
 
     g.display();
+
+    // delete v1;
+    // delete v2;
 
 
 

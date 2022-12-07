@@ -2,14 +2,24 @@
 
 #include <iostream>
 
+#include "linkedlist.h"
+
+using namespace std;
+
 class vertex
 {
 
 public:
 
     int data;
-    vertex *neighbour;
     vertex *next;
+    LinkedList *neighbour;
+
+    // LinkedList l;    
+
+    vertex(){
+        
+    }
 
 };
 
@@ -34,6 +44,9 @@ public:
 
         head = NULL;
         directed = dir;
+
+        // cout<<"\nParameter Constructor"<<endl;
+
     }
 
     ~Graph() {}
@@ -47,12 +60,12 @@ public:
     void removeNeighbour(vertex *&v1 , vertex *&v2);
     bool removeVertex(vertex *&v);
     void removeEdge(vertex *&v1 , vertex *&v2);
+    int neighbours(vertex *&v);
     int numVertices();
     int numEdge();
     int indegree(vertex *v);
     int outdegree(vertex *v);
     int degree(vertex *v);
-    int neighbours(vertex *&v);
     bool neighbour(vertex *&v1, vertex *&v2);
     void display();
 
